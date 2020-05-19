@@ -144,13 +144,15 @@ function setStateTestData(data,state){
 
     for(let i=0;i<data.states_tested_data.length;i++){
         if(data.states_tested_data[i].state == state){
-            totalTest.push(data.states_tested_data[i].totaltested);
-            totalNegativeTest.push(data.states_tested_data[i].negative);
-            totalPositiveTest.push(data.states_tested_data[i].positive);
-            let str = data.states_tested_data[i].testpositivityrate;
-            let newStr = str.substring(0, str.length-1);
-            testPositivityRate.push(newStr);
-            testDate.push(data.states_tested_data[i].updatedon);
+            if(data.states_tested_data[i].totaltested != ''){
+                totalTest.push(data.states_tested_data[i].totaltested);
+                totalNegativeTest.push(data.states_tested_data[i].negative);
+                totalPositiveTest.push(data.states_tested_data[i].positive);
+                let str = data.states_tested_data[i].testpositivityrate;
+                let newStr = str.substring(0, str.length-1);
+                testPositivityRate.push(newStr);
+                testDate.push(data.states_tested_data[i].updatedon);
+            }
         }
     }
     drawChartTestingState(testDate,totalTest,totalPositiveTest,totalNegativeTest);
